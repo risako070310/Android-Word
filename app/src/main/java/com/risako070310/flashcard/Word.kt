@@ -1,4 +1,4 @@
 package com.risako070310.flashcard
 
-class Word(var resId: Int, var name: String) {
+class CustomWord(var resId: Int, var name: String, var japanese: String) {
 }

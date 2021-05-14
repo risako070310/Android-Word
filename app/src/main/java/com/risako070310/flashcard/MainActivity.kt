@@ -12,29 +12,35 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val apple = Word(R.drawable.apple, "苹果")
-        val orange = Word(R.drawable.orange, "橙子")
-        val grape = Word(R.drawable.grape, "葡萄")
-        val strawberry = Word(R.drawable.strawberry, "草莓")
+        val apple = CustomWord(R.drawable.apple, "苹果", "りんご")
+        val orange = CustomWord(R.drawable.orange, "橙子", "オレンジ")
+        val grape = CustomWord(R.drawable.grape, "葡萄", "ぶどう")
+        val strawberry = CustomWord(R.drawable.strawberry, "草莓", "いちご")
+        val wordArray = arrayOf(
+                apple, orange, grape, strawberry
+        )
 
-        addWord(apple)
-        addWord(orange)
-        addWord(grape)
-        addWord(strawberry)
+        for (i in wordArray) {
+            addWord(i)
+        }
     }
 
-    private fun addWord(word: Word){
+    private fun addWord(word: CustomWord) {
         val imageView = ImageView(this)
         imageView.setImageResource(word.resId)
 
         val nameTextView = TextView(this)
         nameTextView.text = word.name
 
+        val japaneseTextView = TextView(this)
+        japaneseTextView.text = word.japanese
+
         val layout = LinearLayout(this.applicationContext)
         layout.orientation = LinearLayout.HORIZONTAL
 
         layout.addView(imageView)
         layout.addView(nameTextView)
+        layout.addView(japaneseTextView)
 
         container.addView(layout)
     }
